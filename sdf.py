@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# A python interface for reading data from SDF file,
+# which is used by EPOCH, a PIC plasmas simulation code.
 
 import os, struct
 import numpy as np
