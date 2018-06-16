@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
 # -*- coding: utf-8 -*-
+# A simple Flask script, with the ability to recieve uploaded file.
+
 import os
 import cv2
 import numpy as np
