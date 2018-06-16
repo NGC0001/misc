@@ -1,0 +1,293 @@
+\message{Messages here will be put out to screen when being compiled.}
+\listfiles
+%------------------------------------------------------------------------
+\documentclass{beamer}
+\mode<presentation>
+
+\usetheme{Hannover}%在这里选择beamer内建主题，它包括了颜色、字体、列举签样式、Logo位置等等等，不过可以被更具体的设置覆盖
+%\logo{\includegraphics[]{/home/sagittarius/LaTeX/figure/pkulogotrans.png}}
+%\usepackage{beamerthemeshadow}
+
+%更细的主题分为color,font,inner,outer四种
+%\usecolortheme{seahorse}
+%\usefonttheme{serif}
+%\useinnertheme{rounded}
+%\useoutertheme{sidebar}
+
+%更为详细的设置
+%\setbeamercolor{itemize item}{fg=orange,bg=green}
+%\setbeamercolor{structure}{fg=gray}
+%\setbeamercolor{normal text}{fg=blue}
+%\setbeamerfont{frametitle}{series=\bfseries}
+
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamertemplate{navigation symbols}{}%导航工具
+%\setbeamertemplate{items}[ball]%设定列举签的样式，也可以是circle,rectangle,default(三角形)等
+%\setbeamertemplate{theorems}[numbered]%设置让定理也编号
+%\setbeamertemplate{caption}[numbered]%设置让图表也编号
+%\setbeamertemplate{background}{\includegraphics[height=\paperheight,width=\paperwidth]{%
+                                %/home/sagittarius/LaTeX/figure/BackgroundPicture}}%设定背景图片
+
+%\beamertemplateshadingbackground{red!10}{yellow!10}%背景色
+%\beamertemplatesolidbackgroundcolor{green!10}%背景色
+%\beamertemplategridbackground[0.5cm]%背景网格
+%\beamertemplatenumberedballsectiontoc
+%\beamertemplateboldpartpage
+
+%\definecolor{blendedred}{rgb}{0.7,0.2,0.2}%定义颜色
+
+%注:Beamer内建了 definition, lemma, theorem, corollary, proof, example, examples 等定理环境
+%------------------------------------------------------------------------
+\usepackage[%CJKnumber = true,%是否使用CJKnumber宏包
+            xeCJKactive = true
+            ]{xeCJK}
+\xeCJKsetup{CJKmath = true,%直接在数学环境中使用中文
+            %CheckSingle = true,%避免单个汉字占据一段的最后一行
+            AutoFallBack = true,%自动使用后备字体输出生僻字
+            AutoFakeBold = {true},%自动使用伪粗体
+            AutoFakeSlant = {true},%自动使用伪斜体
+            %xeCJKspace = true,%保留中文文字间的空格
+            %AllowBreakBetweenPuncts = true,%允许在CJK左标点和CJK右标点间断行
+            xeCJKactive = true
+            }
+
+\input{ChineseEnv}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\defaultfontfeatures{Mapping=tex-text}%如果没有它，一些tex特殊字符无法正常使用，比如连字符
+\setlength{\parindent}{2.3em}%设定段首缩进
+%------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{syntonly}
+%\syntaxonly%只作语法检查，并不编译
+\usepackage{CJKfntef}%实现汉字加点等
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multimedia}
+%------------------------------------------------------------------------
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\def\pgfsysdriver{pgfsys-xdvipdfmx.def}
+%\usepackage{tikz}
+%\pgfdeclaremask{pkulogomask}{/home/sagittarius/LaTeX/figure/pkulogo-mask.png}%声明蒙板
+%------------------------------------------------------------------------
+\hypersetup{%pdftitle={},
+            pdfsubject={Hello, world!},
+            %pdfkeywords={},
+            pdfauthor={杨云鹏},
+            %pdfpagemode={FullScreen},
+            colorlinks={true},
+            linkcolor={red}
+            }
+%------------------------------------------------------------------------
+%\includeonly{filenamelist}%在文档中所有的\include命令中，只把本命令所指定的文件包含进来
+%------------------------------------------------------------------------
+\begin{document}
+\setbeamercovered{invisible}%也可设置为transparent，dynamic，highly dynamic，须在文档环境内设置
+%------------------------------------------------------------------------
+%注意:下面这些定义提纲的命令会干扰\label命令的标签序号，因此不建议使用
+%\AtBeginSection[]{\frame{\frametitle{\secname}
+%                         \tableofcontents[currentsection,hideallsubsections]
+%                         }
+%                  }
+%\AtBeginSubsection[]{\frame{\frametitle{\subsecname}
+%                            \tableofcontents[current,currentsubsection]
+%                            }
+%                     }
+%------------------------------------------------------------------------
+\title{\textbf{\textcolor[rgb]{0.00,1.00,1.00}{Beamer模板}}}
+\subtitle{\textcolor[rgb]{1.00,0.00,0.50}{欢迎观看}}
+\subject{Hello, world!}
+\institute[PHY, PKU]{\textbf{\kai 北京大学物理学院}}
+\author[杨云鹏,小伙伴]{\textcolor[rgb]{1.00,0.00,0.00}{杨云鹏}\\ \texttt{yangyunpeng@pku.edu.cn}
+        \\ \text{} \\
+        \textcolor[rgb]{1.00,0.00,0.00}{小伙伴}\\ \texttt{xiaohuoban@pku.edu.cn}
+        }
+\date[,,]{\textcolor[rgb]{0.00,1.00,0.00}{\today}}
+\frame{\titlepage}
+%------------------------------------------------------------------------
+\begin{frame}
+ \frametitle{\textcolor[rgb]{1.00,0.00,1.00}{索引}}
+ \tableofcontents%[hideallsubsections]
+\end{frame}
+%\frame{\tableofcontents}
+%------------------------------------------------------------------------
+\section{太空}
+\label{LabelNameCannotBeChinese1}
+\subsection{宇宙交响乐}
+\label{LabelNameCannotBeChinese2}
+\begin{frame}{亘古无垠}
+ \textsf{心无界！}
+\end{frame}
+%------------------------------------------------------------------------
+\section{梦幻}
+\label{LabelNameCannotBeChinese3}
+\subsection{梦的幻想曲}
+\label{LabelNameCannotBeChinese4}
+\begin{frame}%[shrink]%自动压缩
+ \frametitle{轻盈绚烂}
+ \texttt{梦无疆！}
+\end{frame}
+%------------------------------------------------------------------------
+\section{Beamer效果}
+\subsection{逐行显示的实现}
+\frame{
+  \frametitle{\subsecname}
+  \begin{itemize}[<+-|alert@+>]
+%beamer取下面两个数字中最大的一个作为一个frame所显示Slide的帧数：
+%1,<>里的最大数值，其中<>里的数值表明项目或效果在那些帧上显示
+%2,未加<>的item的项数，这需要有[<+->]或[<-+>]参数，并需要有列举环境
+%注意，[<-+>]是逐项消失
+%[<+->]或[<-+>]的位置决定这两个参数的作用范围
+   \item<alert@-1,3-> 在第1,3张上被加亮
+   \item 从第1张开始出现，并在第1张上被加亮
+   \item 从第2张开始出现，并在第2张上被加亮
+   \item 从第3张开始出现，并在第3张上被加亮
+  \end{itemize}
+}
+%------------------------------------------------------------------------
+\subsection{字体和色彩的演示}
+\frame{
+  \frametitle{\subsecname}
+  1.\alt<1>{{\kai 楷体只在第1张上}}{楷体只在第1张上}\\
+  2.{\color<1,2-3>[rgb]{0.00,1.00,1.00}在第1,2,3张上是蓝的}\\
+  3.{\color<3>[rgb]{1.00,0.00,0.00}在第3张上是红的}\\
+  4.\alert<-3>{alert代表红色}\\
+  5.\structure<5->{structure代表绿色}\\
+  \only<6>{6.仅在第6张出现}
+}
+%------------------------------------------------------------------------
+\subsection{换页动态效果}
+\frame[<+->]{
+  \frametitle{\subsecname}
+  \begin{enumerate}
+  \item 水平出现效果
+    \transblindshorizontal<1>
+  \item 竖直出现效果
+    \transblindsvertical<2>
+  \item 从中心到四角
+    \transboxin<3>
+  \item 从四角到中心
+    \transboxout<4>
+  \item 溶解效果
+    \transdissolve<5>
+  \item Glitter
+    \transglitter<6>
+  \item 竖直撕开(向内)
+    \transsplitverticalin<7>
+  \item 竖直撕开(向外)
+    \transsplitverticalout<8>
+  \item 涂抹
+    \transwipe<9>
+  \item 渐出
+    \transduration<10>{1}
+  \end{enumerate}
+}
+%------------------------------------------------------------------------
+\subsection{设置待现内容的样式}
+\setbeamercovered{highly dynamic}%[<+->]以及uncover的显示效果由setbeamercovered命令来设定
+\begin{frame}
+ \begin{block}{待现内容是半透明还是不可见?}
+  \uncover<1->{一直不透明}
+  \uncover<1,3->{在第2张透明}
+  \uncover<1,4->{在第2,3张透明}
+ \end{block}
+\end{frame}
+\setbeamercovered{invisible}
+\begin{frame}
+ \begin{block}{待现内容是半透明还是不可见?}
+  \uncover<1->{一直出现}
+  \uncover<1,3->{在第3张重现}
+  \uncover<1,4->{在第4张重现}
+ \end{block}
+\end{frame}
+\begin{frame}{Frame Number}
+ \text{} {} {} {} {} {} {} FrameNumber :\insertframenumber
+
+ TotalFrameNumber :\inserttotalframenumber
+\end{frame}
+%------------------------------------------------------------------------
+\subsection{图片的使用}
+\begin{frame}
+ \begin{columns}%多栏形式
+  \begin{column}{5cm}
+   \pgfdeclareimage[width=5cm]{pkulogo}{/home/sagittarius/LaTeX/figure/pkulogo.png}%声明图片，使用pgfuseimage来使用图片
+   \pgfuseimage{pkulogo}<1>
+   \pgfdeclareimage[width=5cm]{pkulogo3}{/home/sagittarius/LaTeX/figure/pkulogotrans.png}
+   \pgfuseimage{pkulogo3}<2>
+  \end{column}
+  \begin{column}{2cm}
+   \begin{itemize}
+    \item <1-|alert@1>$q_1$
+    \item <2-|alert@2>$q_2$
+   \end{itemize}
+  \end{column}
+ \end{columns}
+\end{frame}
+%------------------------------------------------------------------------
+\subsection{超级链接的实现}
+\frame{
+  \frametitle{\subsecname}
+  \hypertarget<1>{gotofirst}{欢迎来到第1页\\}
+  \hypertarget<5>{gotofifth}{欢迎来到第5页\\}
+  \begin{itemize}
+   \item<2-> 使用 \textbf{hypertarget} 命令添加链接目标
+    \hyperlinkframestartnext{\beamerskipbutton{略过}}
+   \item<3-> 使用 \textbf{hyperlink} 命令添加链接跳转
+   \item<4->
+    \hyperlink{gotofifth}{\beamergotobutton{到第5页}}
+   \item<1->
+    \beamerbutton{到第\pageref{LabelNameCannotBeChinese1}页上的%
+                  第\ref{LabelNameCannotBeChinese1}节第\ref{LabelNameCannotBeChinese2}小节}\\
+    \beamerbutton{到第\pageref{LabelNameCannotBeChinese3}页上的%
+                  第\ref{LabelNameCannotBeChinese3}节第\ref{LabelNameCannotBeChinese4}小节}\\
+   \item<5->
+    \hyperlink{zhixie}{\beamerbutton{回家}}
+   \item<6->
+    \hyperlink{gotofirst}{\beamerreturnbutton{回第1页}}
+  \end{itemize}
+}
+%------------------------------------------------------------------------
+\subsection{使用verbatim环境}
+\begin{frame}[fragile]
+\begin{verbatim}
+for \alert(i) in range(10):
+ print \alert(i)
+\end{verbatim}
+\begin{semiverbatim}
+for \alert{i} in range(10):
+ print \alert{i}
+
+在semiverbatim环境中, \\、 \{、 \} 是有特殊意义的
+\end{semiverbatim}
+\end{frame}
+%------------------------------------------------------------------------
+\subsection{插入多媒体}
+\begin{frame}{视频}
+ \movie[externalviewer]{来看一段视频!}{/home/sagittarius/LaTeX/video/Change1.wmv}
+\end{frame}
+\begin{frame}{音频}
+ \movie[externalviewer]{这里有一段音乐}{/home/sagittarius/LaTeX/audio/Helene.mp3}
+\end{frame}
+%------------------------------------------------------------------------
+\renewcommand{\appendixname}{附录}
+\appendix
+\section{结束语}
+\begin{frame}%[shrink=5]%缩小最多不超过5%
+ \frametitle{\secname}
+ \begin{center}
+  \textbf{\Huge{\textcolor[rgb]{1.00,0.00,0.00}{\kai 漫步宇内}}}
+ \end{center}
+ \begin{center}
+  \textbf{\Huge{\textcolor[rgb]{0.00,0.50,1.00}{\hei 昂首天外}}}
+ \end{center}
+\end{frame}
+\section{致谢}
+\begin{frame}[label=zhixie]
+ \begin{center}
+  \textbf{\Huge{\textcolor[rgb]{1.00,0.00,1.00}{\kai 谢谢大家}}}
+ \end{center}
+\end{frame}
+%------------------------------------------------------------------------
+\end{document}

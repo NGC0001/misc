@@ -1,0 +1,497 @@
+\message{Messages here will be put out to screen when being compiled.}
+\listfiles
+%------------------------------------------------------------------------
+\documentclass[12pt, a4paper, onecolumn, notitlepage]{article}
+%------------------------------------------------------------------------
+\usepackage[%CJKnumber = true,%是否使用CJKnumber宏包
+            xeCJKactive = true
+            ]{xeCJK}
+\xeCJKsetup{CJKmath = true,%直接在数学环境中使用中文
+            %CheckSingle = true,%避免单个汉字占据一段的最后一行
+            AutoFallBack = true,%自动使用后备字体输出生僻字
+            AutoFakeBold = {true},%自动使用伪粗体 AutoFakeBold = {<true|数字>}
+            AutoFakeSlant = {true},%自动使用伪斜体 AutoFakeSlant = {<true|数字>}
+            %xeCJKspace = true,%保留中文文字间的空格
+            %AllowBreakBetweenPuncts = true,%允许在CJK左标点和CJK右标点间断行
+            xeCJKactive = true
+            }
+
+\input{ChineseEnv}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\defaultfontfeatures{Mapping=tex-text}%如果没有它，一些tex特殊字符无法正常使用，比如连字符
+\setlength{\parindent}{2.3em}%设定段首缩进
+%------------------------------------------------------------------------
+\usepackage{verbatim}
+\usepackage{makeidx}
+%\usepackage{showidx}
+\renewcommand\indexname{索~引}
+\makeindex%激活索引命令
+\usepackage{color}
+\usepackage{makecell}
+\usepackage{syntonly}
+%\syntaxonly%只作语法检查，并不编译
+\usepackage{CJKfntef}%实现汉字加点等
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+%------------------------------------------------------------------------
+\usepackage{graphicx}
+%在文档中这样使用：\includegraphics[key=value,...]{file}
+%几个主要关键词：
+%width   把图形缩放到指定的宽度，可以是绝对值，也可以是相对值，如\textwidth
+%height  把图形缩放到指定的高度，可以是绝对值，也可以是相对值，如\textheight
+%angle   逆时针旋转图形
+%scale   缩放图形
+%------------------------------------------------------------------------
+% \newtheorem{name}[counter]{text}[section]
+% name是标记，text是出现在打印文档中的名称
+% counter表明该'定理'是否与某个'定理'共用计数器。section表明计数是否与文档某个段落层次关联
+% 定义之后，在文档中如下使用：
+% \begin{name}[别名]
+% 内容
+% \end{name}
+\newtheorem{MyTheorem}{杨氏定理}
+%------------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{pdfauthor={杨云鹏},
+            pdftitle={},
+            pdfsubject={},
+            pdfkeywords={},
+            %pdfpagemode={FullScreen},
+            colorlinks={true},
+            linkcolor={red}
+            }
+%------------------------------------------------------------------------
+%\includeonly{filenamelist}%在文档中所有的\include命令中，只把本命令所指定的文件包含进来
+\pagestyle{headings}
+%\linespread{factor}%定义行距，\linespread{1.3} 将产生 1.5 倍行距,而 1.6 则产生双倍行距。缺省情况下的行距为 1。
+%\setlength{\parindent}{0pt}%设定首行缩进为0
+%\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}%设定段间距为 0.8ex 到 1.5ex
+%\setlength{parameter}{length}%设定页面参数
+%\addtolength{parameter}{length}%改变页面参数
+%------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------
+%下面的命令对book类型的文档有效
+%\frontmatter%把页码变为罗马数字
+%\mainmatter%打开阿拉伯页码计数器，对页码重新计数
+%\backmatter
+%------------------------------------------------------------------------
+\title{\textbf{\textcolor[rgb]{0.00,1.00,1.00}{\LaTeXe 模板}}}
+\author{\textbf{\textcolor[rgb]{1.00,0.00,1.00}{杨云鹏\thanks{感谢我的信仰！}}}\and
+        \textbf{\textcolor[rgb]{1.00,1.00,0.00}{小伙伴\thanks{感谢我的小伙伴！}}}
+        }
+\date{\textcolor[rgb]{0.00,1.00,0.00}{\today}}
+\maketitle
+%------------------------------------------------------------------------
+\renewcommand{\contentsname}{目 录}
+\thispagestyle{headings}
+\tableofcontents%[hideallsubsections]
+\listoffigures
+\listoftables
+%------------------------------------------------------------------------
+%\include{tex file}%在处理插入的文件之前会开始新的一页。
+%\thispagestyle{plain/headings/empty}
+%\sloppy%降低排版标准
+%\fussy%恢复排版默认标准
+%\indent%缩进本来没有缩进的段落，只有 \parindent 不为零时才有效果。为了缩进章节标题之后的第一个段落,可以使用indentfirst包。
+%\noindent%创建一个不缩进的段落。
+%------------------------------------------------------------------------
+\section{空白和空行}
+多个空白字符(空格和跳格)视同一个，作用是空格；多个空行视同一个，作用是结束段落。 一段中的分行是由\TeX 自动进行的。
+
+\verb+\\+和\verb-\newline-用来强制换行，但并不结束段落。在强行段行后，还禁止分页。
+\verb-\par-也是换行命令。
+
+$\backslash${}newpage用来分页。
+
+\verb+\linebreak[n], \nolinebreak[n], \pagebreak[n] +和\\
+\verb+\nopagebreak[n]+用于向LaTeX提出(不)分行/(不)分页的建议。
+
+单个换行符视为空格；行首空格被忽略。
+\section{命令}
+保留字符：\# \$ \% \^{} \& \_ \{ \} \~{} $\backslash${}
+
+命令：1、反斜线加只包含字母的命令名，命令后的空格、数字或其他非字母字符标志命令的结束；2、反斜线和一个特殊字符。
+
+\TeX{} is fine! Ha\ldots{} Today is \today.
+\section{注释}
+\%用来注释，或用来分割不允许有空格或换行的输入文本。
+
+这里有一些你看不到的%
+\begin{comment}
+这里用了verbatim宏包提供的comment环境。
+注意，这方法不能使用在诸如数学环境等一些复杂环境中。
+\end{comment}
+注释文本。
+\section{排版和一些符号}
+字体从小到大：\\
+\verb-\tiny \scriptsize \footnotesize \small-\\
+\verb-\normalsize \large \Large \LARGE \huge \Huge-\\
+
+除了命令，字体大小也可用环境的方式来实现。如Large环境。
+
+大括号(curly braces)扮演了一个重要角色。它们建立所谓的组。组限制了大多数命令的作用范畴。
+
+使用$\backslash$hyphenation\{word list\}和$\backslash$-来指导\LaTeX{}断字。
+
+\mbox{These words are forced to be placed in one line.}
+
+\fbox{In one line and surrounded by a box as well.}
+
+\emph{强调} \underline{下划线}
+``双引号'' `单引号'
+
+四种短划标点: 连字号- 短破折号-- 长破折号--- 减号$-$
+
+波浪号: \~{} $\sim$
+
+$-30\,^{\circ}\mathrm{C}$%mathrm只对于较短的项才起作用,空格不起作用,重音字符也不起作用，还有mathcal, mathit等等
+\quad \ldots \quad $\cdot$
+
+连字: 不是shelfful而是shelf\mbox{}ful
+
+空格前的反斜线产生一个不能伸长的空\ 格
+
+\~{}产生一个不能伸长的空~格，且禁止断行
+
+句号前的命令$\backslash$@说明此句号是句末，
+即使它紧跟一个大写字母(一般句号紧跟大写字母表示缩写)
+
+$\backslash$frenchspacing禁止在句号后插入额外空间
+(这样$\backslash$@就不必要了)\\ \text{}
+
+水平距离：这是\hspace{1.5cm}一段1.5厘米的空白。\\ %如果这个水平距离在行首或者行末应该消失的话,用命令\hspace*代替\hspace。
+x\hspace{\stretch{1}}x\hspace{\stretch{3}}x.\\ %\stretch{n}产生一个将一行的宽度充满的橡皮长度。
+                                             %如果两个\hspace{\stretch{n}}命令位于同一行,那么它们将根据伸缩因子分配空间。
+
+垂直距离：\\
+\verb+\vspace{length}+通常用于两个空行之间。
+使用命令\verb-\vspace*-避免这个额外的行距存在于页的顶部和末尾。
+命令 \verb-\vspace \stretch 和 \pagebreak- 结合使用可以在页的最后一行输出文本,
+也可以用来保证文本在页面上垂直居中。\\ \bigskip
+
+使用命令 \verb-\bigskip- 和 \verb-\smallskip- 可以获得一个预定义的垂直距离。
+\begin{comment}
+\settoheight{lscommand}{text}
+\settowidth{lscommand}{text}
+\settodepth{lscommand}{text}
+以上三个命令允许获得一个文本串的宽度、高度以及深度。如：\settowidth{\parindent}{This Paragraph:}
+\end{comment}
+\section{注音符号和特殊符号}
+\^o \"a \"i \"\i{} \'e \`e \~n \=e \.e \u e \v e \H e \aa{} \AA{}
+
+\c c \b e \d e
+
+!` ?` \ss{} \oe{} \OE{} \ae{} \AE{} \o{} \O{} \l{} \L{} \i{} \j{}
+\section{标题，章和节}
+\label{jie:biaoti}
+对于Article，有 section, subsection, subsubsection, paragraph, subparagraph 等分节命令。
+
+对于book和report，还有part, chapter两个命令。
+\section*{此节不出现于目录，也不被编号}
+参看第\pageref{jie:biaoti}页第\ref{jie:biaoti}节。
+\section[短标题的使用]{短标题:这里是文档中的标题}
+参看第\pageref{jie:biaoti}页第\ref{jie:biaoti}节\footnote{这是一个脚注。}。
+\subsection{居中}
+flushleft, flushright, center用于控制对齐方式。
+可以用\verb+\flushleft+ \verb|\flushright|, \verb-\center-等命令。
+
+也可以用 \verb&\begin{} \end{}& 环境方式。\footnote{这里使用了逐字打印命令，
+其中的+, |, -等是分隔符，但*和空格不能用作分隔符。}
+\section{列举}
+\flushleft
+\begin{enumerate}
+ \item You can mix the list environments to your taste:
+       \begin{itemize}
+        \item But it might start to look silly.
+        \item[-] With a dash.
+       \end{itemize}
+ \item Therefore remember:
+       \begin{description}
+        \item[Stupid] things will not become smart because they are in a list.
+        \item[Smart] things, though, can be presented beautifully in a list.
+       \end{description}
+\end{enumerate}
+\section{引用}
+quote, quotation, verse是引用环境。
+quotation用于几个段落的长引用，verse用于诗歌的引用。
+\begin{verse}
+Humpty Dumpty sat on a wall:\\
+Humpty Dumpty had a great fall.\\
+All the King’s horses and all
+the King’s men\\
+Couldn’t put Humpty together again.
+\end{verse}
+\section{逐字打印}
+\verb+\begin{verbatim}+和\verb+\end{verbatim}+用于逐字环境。
+
+此外，有\verb+\verb+和\verb+\verb*+命令，还有verbatim*环境。
+带星号表示标记空格。
+
+例如：\verb*+空 格+
+
+\verb-\verbatiminput{filename}-命令可以把一个 ASCII 码的文本文件包含到文档中来,
+就好像它是在verbatim环境中一样。
+\section{表格}
+\begin{tabular}{|l|c|r|p{2cm}|}
+\hline%表格的水平线
+左对齐的列 & 居中的列 & 右对齐的列 & 宽度为2cm，自动换行的列 \\
+\cline{1-1} \cline{4-4} \verb+\cline{i-j}+ & 添加部分表线 & i, j表示起始和终止列号 & \\
+\hline
+\hline
+\verb+\hline+ & & 产生整体表线 &
+\end{tabular}
+\\
+\begin{tabular}{@{} l @{}}%@{}用于设定分隔符
+\hline
+no leading space\\
+\hline
+\end{tabular}
+\\
+\begin{tabular}{l}
+\hline
+leading space left and right\\
+\hline
+\end{tabular}
+\\ \text{} \\
+\begin{tabular}{c r @{.} l}
+Pi Expression & \multicolumn{2}{|c}{Value}\\
+%multicolumn用于跨列内容，它两边的分割符要重设
+\hline
+$\pi$ & 3&1416 \\
+$\pi^{\pi}$ & 36&46 \\
+$(\pi^{\pi})^{\pi}$ & 80662&7 \\
+\end{tabular}
+
+%\nomakegapedcells
+\begin{tabular}{|l|c|c|}\hline
+\diaghead(-4,1){\hskip4.2cm}{Diag \\Column Head I}{Diag Column \\Head II} &
+\thead{Second\\column} & \thead{Third\\column} \\ \hline
+\end{tabular}
+\section{浮动体}
+即figure和table环境。这两个环境支持放置说明符。
+
+\begin{tabular}{c l}
+放置说明符 & 浮动体允许放置位置 \\
+\hline
+h & 浮动体就放在当前页面上。这主要用于小浮动体 \\
+t & 放在页面顶部 \\
+b & 放在页面底部 \\
+p & 放在一专门页面,仅含一个浮动体 \\
+! & 忽略阻止浮动体放置的大多数内部参数 \\
+\end{tabular}\\
+缺省值为[tbp]。不建议仅使用单个放置说明符，特别是单个[h]。
+
+下面用\verb+\makebox+画一个方形插入文档。
+事实上，这可以用来给图片预留空间~{\ref{white-figure}}。
+\begin{figure}[!hbp]
+\makebox[\textwidth]{\framebox[5cm]{\rule{0pt}{5cm}}}
+\caption[浮动体]{ $5\times 5\ cm^2$的预留空间。} \label{white-figure}
+\end{figure}
+用 \verb+\clearpage 甚至 \cleardoublepage+ 命令\LaTeX 立即安排
+等待序列中所有剩下的浮动体,并且开一新页。
+命令 \verb-\cleardoublepage- 会新开奇数页面。
+\section{保护脆弱命令\protect\footnote{这就是一个例子。}}
+\verb+\footnote 或 \phantom +是脆弱命令的例子。
+\verb-\protect -仅仅保护紧跟其右侧的命令,连它的参量也不惠及，
+在大多数情形下,过多的\verb- \protect -并不碍事。
+\section{数学公式}
+在数学模式中:
+\begin{itemize}
+ \item[1.]空格和分行都将被忽略。所有的空格或是由数学表达式逻辑的衍生,或是由特殊的命令得到。
+ \item[2.]不允许有空行,每个公式中只能有一个段落。
+ \item[3.]每个字符都将被看作是一个变量名并以此来排版。
+如果希望在公式中出现普通文本(使用正体字并可以有空格),那么必须使用命令\verb- \textrm{...} -来输入这些文本。
+\end{itemize}
+
+段落内部数学表达式用：\verb+ \( \), $ $, \begin{math} \end{math}+，
+如：\(\tau\epsilon\chi\) , My $\heartsuit$ , \begin{math}a+b=c\end{math}，
+$\iint_{D}\,\mathrm{d}x\mathrm{d}y$ , $\sum_{k=1}^n$ , $\lim_{n \to \infty}$
+
+\text{}
+
+大的数学式子用\verb+ \[ \], \begin{displaymath} \end{displaymath}+\\
+\[\iint_{D}\,\mathrm{d}x\mathrm{d}y\int_0^1\,\sum_k\vec {S_k}\vec S_k\,\mathrm{d}z\stackrel{!}{=}\sum_{i=1}^n\vec {P_i}{\vec P}_i\]
+%\stackrel将第一项中的符号以上标大小放在处于正常位置的第二项上。
+\begin{displaymath}
+\lim_{n \to \infty}\,=\,\frac{\pi^2}{6}\cdot\prod_{i}^{1\rightarrow \infty}\sigma_i
+\end{displaymath}
+
+\text{}
+
+equation环境会对公式编号，用label, ref引用公式。
+eqnarray可以垂直对齐，amsmath提供了一些更好的垂直环境(split, align等)。
+
+\text{}
+
+$\sqrt[100]{\sqrt{100}*\surd[100]}$ \\[10pt]%设置行间距
+$\overline{\underline{m}+\underline{n}}$ \\
+$\widetilde{xyz} \quad \widehat{abc} \quad \vec a \qquad \overleftarrow{AB} \qquad \overrightarrow{AB} \quad x'y''$ \quad x'y'' \\
+$a\bmod b$ \qquad \qquad $a\pmod b$ \\
+$\underbrace{ a+b+\cdots+z }_{26}$ \quad $\overbrace{ a+b+\cdots+z }^{26}$ \\
+$\ldots\,\cdots\,\vdots\,\ddots$ \\
+
+\[{n \choose m} \qquad {l \atop k+1}\]
+\begin{displaymath}
+1+\left(\frac{1}{\pi^2}\right)\neq\left\{\frac{1}{\pi}\right.\qquad\big\|\Big\|\bigg\|\Bigg\|
+\end{displaymath}  
+\begin{displaymath}
+1+\big(\frac{1}{\pi^2}\Big)\neq\bigg(\frac{1}{\pi}\Bigg)
+\end{displaymath}  
+\\[30pt]
+
+函数名通常用罗马字体正体排版,而不是像变量名一样用意大利体排版。
+\begin{verbatim}
+\arccos \cos   \csc  \exp  \ker    \limsup \min
+\arcsin \cosh  \deg  \gcd  \lg     \ln     \Pr
+\arctan \cot   \det  \hom  \lim    \log    \sec
+\arg    \coth  \dim  \inf  \liminf \max    \sin
+\sinh   \sup   \tan  \tanh 
+\end{verbatim}
+\subsection{数学空格}
+\begin{tabular}{l|l|l}
+\verb-\,-     &  $|\,|$     & 3/18 quad \\
+\verb-\:-     &  $|\:|$     & 4/18 quad \\
+\verb-\;-     &  $|\;|$     & 5/18 quad \\
+\verb*-\ -    &  $|\ |$     & 中等大小空格 \\
+\verb-\quad-  &  $|\quad|$  & 大空格，对应于目前字体中字符`M'的宽度 \\
+\verb-\qquad- &  $|\qquad|$ & 大空格 \\
+\verb-\!-     &  $|\!|$     & -3/18 quad \\
+\end{tabular}
+\subsection{垂直对齐}
+\subsubsection{array环境}
+array有些类似于tabular环境,使用 \verb-\\- 命令来分行。也可以在 array 环境中画线。
+\begin{displaymath}
+\mathbf{X} =
+\left( \begin{array}{ccc}
+x_{11} & x_{12} & \ldots \\
+x_{21} & x_{22} & \ldots \\
+\vdots & \vdots & \ddots
+\end{array} \right)
+\end{displaymath}
+\begin{displaymath}
+\left(\begin{array}{c|c}
+1 & 2 \\
+\hline
+3 & 4
+\end{array}\right)
+\end{displaymath}
+\subsubsection{eqnarray 和 eqnarray* 环境}
+eqnarray 和 eqnarray* 环境类似于 \{rcl\} 形式的三列表格。
+在 eqnarray 中,每一行都会有一个方程编号。eqnarray* 不对方程进行编号。
+\setlength\arraycolsep{2pt}%由于中间列两边的空格默认很大，用这个命令调节
+\begin{eqnarray}
+\sin x & = & x -\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-{}\nonumber\\
+       &   & -\frac{x^{7}}{7!}+\cdots
+\end{eqnarray}%nonumber表示该行不编号
+\subsection{幻影}
+\verb-\phantom- 命令可以为不在最终输出中出现的字符预留空间。
+\begin{displaymath}
+\Gamma_{ij}^{\phantom{ij}k}
+\qquad \textrm{versus} \qquad
+\Gamma_{\phantom{k}ij}^{k}
+\end{displaymath}
+\subsection{自定义定理}
+\begin{MyTheorem}[绝对零度不可达到定理]
+时运不济，命途多舛。
+\end{MyTheorem}
+\subsection{数学字体}
+在数学模式中,字体大小用四个命令来设定:\\
+\verb-\displaystyle, \textstyle, \scriptstyle, \scriptscriptstyle- \\
+改变字体时，相应的定界符也要改变。如：
+\begin{displaymath}
+\mathop{\mathrm{corr}}(X,Y)=
+\frac{\displaystyle\sum_{i=1}^n(x_i-\overline x)(y_i-\overline y)}
+{\displaystyle\biggl[\sum_{i=1}^n(x_i-\overline x)^2\sum_{i=1}^n(y_i-\overline y)^2\biggr]^{1/2}}
+\end{displaymath}
+这个例子中,需要比标准的 \verb-\left[ \right]- 还要大一些的括号。\\ \text{} \\
+
+字体改变命令 \verb-\mathbf- 给出粗体字母,但是这些是罗马字体(竖直的),而数学符号通常是斜体。
+有一个 \verb-\boldmath- 命令,但是这只能用于数学模式之外。对于符号也是如此。
+\section{参考文献}
+用 thebibliography 环境产生一个参考文献。在一个参考文献中每个条目以如下命令开头：
+{\center{\verb-\bibitem{marker}-}}\\
+然后使用 marker 在正文中引用这本书、这篇文章或者论文。
+{\center{\verb-\cite{marker}-}}\\
+参考文献条目的编号是自动生成的。\\
+Book~\cite{ReferenceBook} is a good book.
+\renewcommand\refname{参考文献}
+\begin{thebibliography}{99}%{99}告诉 LATEX 参考文献条目的编号不会比数字 99 更宽。
+\bibitem{ReferenceBook} Y.~My True Love: \textit{Chinese \TeX}, \textsl{YunPeng}, Volume~9, Issue~1 (1992)
+\end{thebibliography}
+%意大利斜体\textit{}；slanted斜体\textsl{}
+\section{索引命令的使用}
+\index{普通项}  \text{}
+\index{普通项!Affiliated Item}  \text{}\\
+\index{FormateOfItem1@\textbf{索引项粗体格式}}  \text{}\\
+\index{FormateOfItem2@\textsl{索引项斜体格式}}  \text{}\\
+\index{页码粗体格式|textbf}  \text{}\\
+\index{页码斜体格式|textit}  \text{}\\
+\section{\LaTeXe 中的盒子}
+LATEX 通过盒子来建立整个文档的布局。
+每个字符都是一个小的盒子,这些盒子连接起来构成单词,单词本身连接起来构成一行。
+单词之间的连接是一个橡皮连接, LATEX 将自动进行调整使得单词将恰好构成一行。
+几乎可以把任何可见元素(包括盒子自身)放到一个盒子中。
+然后 LATEX 将会像处理单个字母一样处理这个盒子。\\
+
+\verb-\parbox[pos]{width}{text}-\\
+\verb-\begin{minipage}[pos]{width} text \end{minipage}-\\
+参数 pos 可以取以 c, t 或 b,这个参数用于控制盒子里文本的垂直位置。\\[20pt]
+
+\verb-\mbox-事实上就是一个盒子。\\
+\verb-\makebox[width][pos]{text}-用于处理水平对齐的材料。
+除绝对数值外，也可以传递\verb-\width- \verb-\height- \verb-\depth- \verb-\totalheight-给width。
+这几个值是测量盒子内部文本来获得的(注意，width是盒子从外部看起来的宽度)。
+参数 pos 接受一个字符: c–居中、l–靠左、r–靠右和 s–将文本均匀分布到整个盒子中。
+命令 \verb+\framebox 和 \makebox+ 完成同样的工作,不同之处在于它在内部文本的周围画出一个矩形框。\par
+\makebox[\textwidth]{c e n t r a l}\par
+\makebox[\textwidth][s]{s p r e a d}\par
+\framebox[1.1\width]{Guess I’m framed now!} \par
+\framebox[0.8\width][r]{Bummer, I am too wide} \par
+\framebox[1cm][l]{never mind, so am I}Can you read this?\\[20pt]
+
+\verb+\raisebox{lift}[depth][height]{text}+能够定义盒子的高度。
+\raisebox{0pt}[0pt][0pt]{\Large%
+\textbf{Aaaa\raisebox{-0.3ex}{a}%
+\raisebox{-0.7ex}{aa}%
+\raisebox{-1.2ex}{r}%
+\raisebox{-2.2ex}{g}%
+\raisebox{-4.5ex}{h}}}
+he shouted but not even the next one in line noticed that
+something terrible had happened to him.
+\section{标尺和支撑}
+\verb-\rule[lift]{width}{height}-可以用来产生水平方向和垂直方向的线条。
+
+一种特殊的应用就是没有宽度只有高度的标尺。
+在专业的出版术语中,这被称为支撑(Struts)。
+它被用来保证文档的一部分具有一个确定的高度最小值。
+\section{定制\LaTeX}
+定义自己的命令:\verb+\newcommand{name}[num]{definition}+\\
+不可重定义已有命令。num 是可选的,用于指定命令所需的参数数目(最多9个)。用 \#1 等使用参数。\\
+\verb+\renewcommand+使用与命令\verb-\newcommand-相同的语法。用于重写已有命令。\\
+\verb-\providecommand- 完成与 \verb-\newcommand- 相同的工作。但如果命令已存在,它将会被忽略。\\ \text{}
+
+定义自己的环境：\verb-\newenvironment{name}[num]{before}{after}-\\
+在参数 before 中提供的内容将在被命令包含的文本之前处理,
+而在参数 after 中提供的内容将恰好在 \verb-\end{name}- 的前面处理。\\ \text{}
+
+定义自己的宏包：\\
+写一个宏包的基本工作就是将原本很长的文档导言(例如包含了很多新命令和新环境)拷贝到一个分离的文件中去,
+这个文件需要以 .sty 结尾。
+还需要使用一个专用的命令: \verb-\ProvidesPackage{package name}-。
+这个命令应该在你的包的最前面使用，用于告诉 LaTeX 宏包的名称，
+从而允许 LaTeX 在你尝试两次引入同一个宏包的时候给出一个错误信息。
+%------------------------------------------------------------------------
+\renewcommand{\appendixname}{附录}
+\appendix
+\section{结束语}
+\text{} \\ \text{}
+
+\textbf{\Huge{\textcolor[rgb]{1.00,0.00,0.00}{\kai 谢谢！}}}
+\textbf{\Huge{\textcolor[rgb]{0.00,0.50,1.00}{\hei Thanks!}}}
+%------------------------------------------------------------------------
+\printindex
+%------------------------------------------------------------------------
+\end{document}

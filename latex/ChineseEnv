@@ -1,0 +1,14 @@
+%------------------------------------------------------------------------
+\setCJKmainfont{仿宋}%推荐宋、仿宋等字体
+%\setCJKfallbackfamilyfont{\CJKrmdefault}[font features]{font name}%设置中文主字体的备用字体
+\setCJKsansfont{幼圆}%推荐黑、幼圆等字体
+%\setCJKfallbackfamilyfont{\CJKsfdefault}[font features]{font name}%设置中文无衬线字体的备用字体
+\setCJKmonofont{微软雅黑}
+%\setCJKfallbackfamilyfont{\CJKttdefault}[font features]{font name}%设置中文等宽字体的备用字体
+
+
+%设置新的字族
+\newCJKfontfamily[kai]\kai{楷体}
+%\setCJKfallbackfamilyfont{kai}[font features]{font name}
+\newCJKfontfamily[hei]\hei{黑体}
+%------------------------------------------------------------------------
