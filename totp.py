@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# An implementation to Google Authenticator: Time-based One-time Password.
 
 import hashlib, time, struct, sys
 
