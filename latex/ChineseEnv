@@ -1,3 +1,5 @@
+% xelatex common font setting
+
 %------------------------------------------------------------------------
 \setCJKmainfont{仿宋}%推荐宋、仿宋等字体
 %\setCJKfallbackfamilyfont{\CJKrmdefault}[font features]{font name}%设置中文主字体的备用字体
