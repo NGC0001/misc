@@ -1,4 +1,4 @@
-" vim配置文件
+" vim配置
 
 syntax on
 
