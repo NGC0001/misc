@@ -1,5 +1,6 @@
 import datetime
 import random
+import math
 
 html_head = '''
 <!DOCTYPE html>
@@ -19,8 +20,10 @@ html_tail = '''
 
 
 def generate_random_string(minlen, maxlen):
+    lnmin, lnmax = math.log(minlen), math.log(maxlen)
+    lnlen = random.uniform(lnmin, lnmax)
+    length = int(math.exp(lnlen))
     txt = ''
-    length = random.randint(minlen, maxlen)
     for i in range(length):
         txt += chr(random.randint(32, 126))
     return txt
@@ -66,7 +69,6 @@ def compose_http_response(recieved_data=b''):
             response = '{}{}\r\n{}'.format(
                     response_status_raw, response_headers_raw, response_message_raw)
             response = response.encode('utf-8')
-            print(response)
             return response
     except:
         return b''
