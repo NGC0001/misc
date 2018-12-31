@@ -27,7 +27,7 @@ using std::endl;
 
 std::wstring utf8string_to_wstring(const std::string& str);
 
-std::string pythonSource{"py_function_for_cpp"}; // .py extension must be droped.
+std::string pythonSource{"call_python_from_cpp"}; // .py extension must be droped.
 std::string funcName{"hello"};
 
 

@@ -1,4 +1,4 @@
-'''py_function_for_cpp.py - Python source designed to '''
+'''call_python_from_cpp.py - Python source designed to '''
 '''demonstrate the use of python embedding'''
 
 import numpy as np
