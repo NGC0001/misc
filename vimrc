@@ -13,6 +13,7 @@ autocmd BufNewFile,BufRead *.FOR,*.for setlocal noexpandtab
 "后面是pattern(用,分隔)以及要执行的命令(用|分隔)
 
 set number
+set relativenumber
 set autoindent
 set smartindent
 set showmatch
