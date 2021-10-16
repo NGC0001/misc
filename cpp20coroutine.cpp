@@ -1,3 +1,5 @@
+// https://www.scs.stanford.edu/~dm/blog/c++-coroutines.html
+
 #include <concepts>
 #include <coroutine>
 #include <cstdint>
@@ -5,6 +7,15 @@
 #include <iostream>
 #include <stdexcept>
 #include <utility>
+
+int func() {
+  static int si{1};
+  ++si;
+  int v{si};
+  std::cout << "Function static int address: " << reinterpret_cast<std::uintptr_t>(&si) << std::endl;
+  std::cout << "Function int address: " << reinterpret_cast<std::uintptr_t>(&v) << std::endl;
+  return v;
+}
 
 struct Sideway {
   struct promise_type;
@@ -173,13 +184,22 @@ private:
 Generator<unsigned>
 counter() {
   int _gInt;
+
   std::cout << "Coroutine int address (before 1st suspension): " << reinterpret_cast<std::uintptr_t>(&_gInt) << std::endl;
+
   // std::cout << "To throw before 1st suspension" << std::endl;
   // throw std::runtime_error{"in cortoutine before 1st suspension"};
+
   co_await suspend_always{};
+
   std::cout << "Coroutine int address (after 1st suspension): " << reinterpret_cast<std::uintptr_t>(&_gInt) << std::endl;
+
+  std::cout << "To call func from coroutine." << std::endl;
+  auto _v = func();
+
   // std::cout << "To throw after 1st suspension" << std::endl;
   // throw std::runtime_error{"in cortoutine after 1st suspension"};
+
   for (unsigned i = 0; i < 3; ++i) {
     if (i == 0) {
       co_yield i;
@@ -194,6 +214,11 @@ int _GlobalInt;
 
 int main() try {
   std::cout << "Data int address: " << reinterpret_cast<std::uintptr_t>(&_GlobalInt) << std::endl;
+
+  std::cout << "main address: " << reinterpret_cast<std::uintptr_t>(&main) << std::endl;
+  std::cout << "func address: " << reinterpret_cast<std::uintptr_t>(&func) << std::endl;
+  std::cout << "To call func from main." << std::endl;
+  auto _v = func();
 
   int _tmpInt;
   std::cout << "Stack int address: " << reinterpret_cast<std::uintptr_t>(&_tmpInt) << std::endl;
